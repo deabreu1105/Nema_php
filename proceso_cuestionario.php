@@ -88,7 +88,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
         //Envio del correo
         $from = "usuario@dominio.com";
-        $to = "deabreu83@gmail.com";
+        $to = "juanf.romerog@gmail.com";
         $subject = "Resultados del proceso indagatorio";
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -112,7 +112,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <p>'.$saludo.' '.$nombreUsuario.' tienes '.$padecimiento.' </p>
             </body>
         </html>';
-        mail($to, $subject, $message, $headers);
+        mail($to, $subject, $message, $headers); //Función de envio de correo
     
         
         //header('Location: index.php');
