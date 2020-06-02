@@ -6,7 +6,7 @@
     $password = $_POST['pass'];
 
     //$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-    $con = new oRG_BDConector('localhost','root','root','nema');
+    $con = new oRG_BDConector('localhost','root','','nema');
     //$con = new oRG_BDConector('localhost','root','','nema');
     $con->oConectar();
     $sql = $con->oEjecutar("SELECT id,nombres, apellidos,nom_usuario,contrasena,tipo_usuario FROM usuario WHERE nom_usuario = '{$username}'");

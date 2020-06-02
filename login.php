@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<input type="password" name="pass" id="pass" placeholder="Contraseña" class="input-field" required>
 					</div>
 					<input class="submit-w3" type="submit" value="Login">
-					<div class="f_link">
+				<!--	<div class="f_link">
 						<span class="txt1">
 							O entrar con
 						</span>
@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<a href="#" class="login100-social-item">
 							<img src="images/icons/icon-google.png" alt="GOOGLE">
 						</a>
-					</div>
+					</div>-->
 
 
 					<div class="f_link">

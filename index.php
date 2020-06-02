@@ -138,16 +138,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</p>
 
 				<div class="screen-bottom">
-					<div class="col-md-12 screen-left">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox">
-							<img class="port-pic" class="img-responsive" src="images/screen-4.png" />
-							<div class="b-wrapper">
-								<h2 class="b-animate b-from-left b-from   b-delay03 ">
-									<span>orem ipsum dolor sit amet, consectetuer adipiscing lit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis</span>
-								</h2>
-							</div>
-						</a>
-					</div>
+				<iframe class="video" src="https://www.youtube.com/embed/qZkyqoklIIk" ></iframe>
+
 				</div>
 			</div>
 				<div class="feature-bottom">
@@ -177,34 +169,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="app1-bottom">
 					<div class="col-md-6 app1-left">
 						<div class="app1-main">
-							<span>03.05.2014</span>
+					
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
 						<div class="app1-main">
-							<span>09.05.2014</span>
+						
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
 						<div class="app1-main">
-							<span>03.05.2014</span>
+					
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
 					</div>
 					<div class="col-md-6 app1-left">
 						<div class="app1-main">
-							<span>15.05.2014</span>
+					
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
 						<div class="app1-main">
-							<span>10.05.2014</span>
+					
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
 						<div class="app1-main">
-							<span>09.05.2014</span>
+					
 							<h4>dolor sit amet, consectetuer adipiscing elit</h4>
 							<p>natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim</p>
 						</div>
@@ -216,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--end-app1-->
 
 	<!--start-member-->
-	<div class="member" id="servicios">
+<!--	<div class="member" id="servicios">
 		<div class="container">
 			<div class="member-top">
 				<h3>Servicios</h3>
@@ -286,10 +278,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-member-->
 	<!--end-team-->
-	<div class="team" id="testimonials">
+	<!--<div class="team" id="testimonials">
 		<div class="container">
 			<div class="team-top">
 				<h3>Equipo</h3>
@@ -314,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 			</div>
-			<!--<div class="team-bottom">
+			<div class="team-bottom">
 				
 				<div class="col-md-12 team-left">
 					<img src="images/team-back.png" alt=""/>
@@ -326,48 +318,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-			</div>-->
+			</div>
 		</div>
-	</div>
+	</div>-->
 	<!--end-team-->
 	
 	
 	<!--start-contact-->
 	<div class="contact" id="contact">
 		<div class="container">
-			<div class="contact-top">
-				<h3>Contactanos</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
+			<div class="contact-top ">
+				<h3 class="text_white">Contactanos</h3>
+				<p class="text_white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
 			</div>
 			<div class="contact-bottom">
 				<form>
-					<div class="col-md-8 contact-left">
+					<div class="col-md-6 contact-left">
 						<input type="text" name="nombreContact" id="nombreContact" value="Tu Nombre" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tu Nombre';}"/>
 						<input type="text" name="correoContact" id="correoContact" value="Tu Correo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tu Email ';}"/>
 					</div>
-					<div class="col-md-4 contact-right">
-						<h6>NEMAapp<span>Bogotá, Colombia</span></h6>
-						<p>Telf: 8643456</p>
-						<p><a href="mailto:example@email.com">nema@dominio.com</a></p>
-						<p>pagina.com</p>
-					</div>
-					<div class="contact-textarea">
+
+					<div class="col-md-6 contact-textarea">
 						<textarea value="Your Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Tu mensaje</textarea>
 					</div>
 					<div class="contact-submit">
 						<input type="submit" value="Submit" />
 					</div>
 				<form>
-			</div>
-			<div class="social">
-				<ul>
-					<li><a href="#"><span class="fb"> </span></a></li>
-					<li><a href="#"><span class="p"> </span></a></li>
-					<li><a href="#"><span class="twt"> </span></a></li>
-					<li><a href="#"><span class="g"> </span></a></li>
-					<!--<li><a href="#"><span class="rss"> </span></a></li>-->
-				</ul>
-			</div>
 		</div>
 	</div>
 	<!--end-contact-->
@@ -375,7 +352,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="container">
 			<div class="footer-text">
-				<p>Diseñado por<a href="http://w3layouts.com/"> DAXOS</a></p>
+			<div class="col-md-12 d-flex">
+						<h6 class="text_white">NEMAapp<span>Bogotá, Colombia</span></h6>
+						<p class="text_white">Telf: 8643456</p>
+						<p class="text_white"><a class="text_white" href="mailto:example@email.com">nema@dominio.com</a></p>
+						<p class="text_white">pagina.com</p>
+					</div>
 			</div>
 		</div>
 		 <script type="text/javascript">
