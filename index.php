@@ -60,17 +60,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 	<div class="header" id="home">
 		<div class="container">
-			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt=""></a>
-			</div>
+
 			<div class="navigation">
 			 <span class="menu"></span> 
 				<ul class="navig">
-					<li><a href="index.html" class="scroll">Home</a><span> </span></li>
-					<li><a href="#preguntas" class="scroll">Preguntas</a><span> </span></li>
-					<li><a href="#servicios" class="scroll">Servicios</a><span> </span></li>
-					<li><a href="#contact" class="scroll">Contacto</a><span> </span></li>
-					<li><a href="logout.php" class="scrol">Cerrar sesion</a><span> </span></li>
+					<li><a href="index.html" class="scroll">Home</a></li>
+					<li><a href="#preguntas" class="scroll">Preguntas</a></li>
+					<li class="logo"><a href="index.php"><img src="images/logo.png" alt=""></a></li>
+					<li><a href="#contact" class="scroll">Contacto</a></li>
+					<li><a href="logout.php" class="scrol">Cerrar sesion</a></li>
 				</ul>
 			</div>
 			<!-- script-for-menu -->
@@ -96,9 +94,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-4 banner-right">
 					<a href="cuestionario.php">Proceso Indagatorio</a>
 				</div>
-				<div class="clearfix"></div>
+			<!--	<div class="clearfix"></div>
 
-				<!--<div class="col-md-4 banner-right" style="margin-top: -10">
+				<div class="col-md-4 banner-right" style="margin-top: -10">
 					<a href="#">¿Que es NEMAapp?</a>
 				</div>
 				
@@ -137,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					integrado
 				</p>
 
-				<div class="screen-bottom">
+				<div class="map">
 				<iframe class="video" src="https://www.youtube.com/embed/qZkyqoklIIk" ></iframe>
 
 				</div>
@@ -162,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--start-app1-->
 	<div class="app1" id="preguntas">
 		<div class="container">
-			<div class="app1-top">
+			<div class="app1-top contact-top">
 				<h3>Preguntas</h3>
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
 			</div>	
