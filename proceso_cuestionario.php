@@ -1,39 +1,60 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    include_once('conexion.php');
-    include_once('utilidades.php');
 
-    var_dump($_SESSION['loggedin']); 
-    var_dump($_SESSION['userid']);
-    var_dump($_SESSION['username']);
-    $padecimiento ="";
-    $nombreUsuario = $_SESSION['name'];
-    
+require_once ('PHPMailer/PHPMailer.php');
+require_once ('PHPMailer/SMTP.php');
+require_once ('PHPMailer/Exception.php');
+
+include_once('conexion.php');
+include_once('utilidades.php');
+
+$padecimiento ="";
+$nombreUsuario = $_SESSION['name'];
+
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    $idusuario = $_SESSION['userid']; 
-    $infec_orin = $_POST['infec_orin']; //1
-    $infec_vias_orin = $_POST['infec_vias_orin']; //2
-    $ardor_orin = $_POST['ardor_orin']; //3
-    $aumento_orin = $_POST['aumento_orin']; //4
-    $sencion_novaciar_vejiga = $_POST['sencion_novaciar_vejiga']; //5
-    $sencion_urge_orin = $_POST['sencion_urge_orin']; //6
-    $sencion_dolor_pelvico = $_POST['sencion_dolor_pelvico']; //7
-    $sangra_orin = $_POST['sangra_orin']; //8
-    $levantar_orin = $_POST['levantar_orin']; //9
-   
-    $flujo_vaginal = $_POST['flujo_vaginal']; //10
-    $color_flujo_vaginal = isset( $_POST['color_flujo_vaginal'] ) ? $_POST['color_flujo_vaginal'] : '';
-    $olor_flujo_vaginal = isset( $_POST['olor_flujo_vaginal'] ) ? $_POST['olor_flujo_vaginal'] : '';
- 
-   
-    $dolor_espalda = $_POST['dolor_espalda']; //11
-    $ulti_semanas_dolor_espalda = isset( $_POST['ulti_semanas_dolor_espalda'] ) ? $_POST['ulti_semanas_dolor_espalda'] : '';
-   
-    $sensacion_fiebre = $_POST['sensacion_fiebre']; //12
     
-    $fechaRegistro = date('Y/m/j');
-    $con = new oRG_BDConector('localhost','root','','nema');
-    $con->oConectar();
+        $idusuario = $_SESSION['userid']; 
+        $infec_orin = $_POST['infec_orin']; //1
+        $infec_vias_orin = $_POST['infec_vias_orin']; //2
+        $ardor_orin = $_POST['ardor_orin']; //3
+        $aumento_orin = $_POST['aumento_orin']; //4
+        $sencion_novaciar_vejiga = $_POST['sencion_novaciar_vejiga']; //5
+        $sencion_urge_orin = $_POST['sencion_urge_orin']; //6
+        $sencion_dolor_pelvico = $_POST['sencion_dolor_pelvico']; //7
+        $sangra_orin = $_POST['sangra_orin']; //8
+        $levantar_orin = $_POST['levantar_orin']; //9
+       
+        $flujo_vaginal = $_POST['flujo_vaginal']; //10
+        $color_flujo_vaginal = isset( $_POST['color_flujo_vaginal'] ) ? $_POST['color_flujo_vaginal'] : '';
+        $olor_flujo_vaginal = isset( $_POST['olor_flujo_vaginal'] ) ? $_POST['olor_flujo_vaginal'] : '';
+     
+       
+        $dolor_espalda = $_POST['dolor_espalda']; //11
+        $ulti_semanas_dolor_espalda = isset( $_POST['ulti_semanas_dolor_espalda'] ) ? $_POST['ulti_semanas_dolor_espalda'] : '';
+       
+        $sensacion_fiebre = $_POST['sensacion_fiebre']; //12
+        
+        $fechaRegistro = date('Y/m/j');
+        $con = new oRG_BDConector('localhost','root','','nema');
+        $con->oConectar();
+
+
+
+
+
+    $selecCorreo = $con->oEjecutar("SELECT email FROM usuario WHERE id = {$idusuario}");
+    $count = 0;
+
+    while($row = $con->oDatosObjeto($selecCorreo)){
+        //debug($row);WHERE nom_usuario = '$username '
+        //var_dump($row);
+        $count++;
+        $result = $row;
+    }
+    $resultEmail = $result->email;
     
 
     /*Para cistitis aplican 1, 2, 3, 4, 5, 6, 7, 9 y 12.
@@ -47,81 +68,103 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $padecimiento="Cistitis";
         if($flujo_vaginal == "si"){    
             $padecimiento = $padecimiento.", hay que descartar infección vaginal y/o Pélvica ginecológica"; 
-        }else{
-            $padecimiento = "No presenta ninguna afección";
-        }   
-    }
-
+        }
+    }else{
+        $padecimiento = "No presenta ninguna afección";
+    }  
     
 
     if($infec_orin =="si" && $infec_vias_orin =="si" && $dolor_espalda =="si" && $sensacion_fiebre =="si"){
         $padecimiento = "Infección urinaria alta o renal";
         if($dolor_espalda == "si"){    
-            $padecimiento =$padecimiento.", padeciste infección baja (cistitis)"; 
-        }else{
-            $padecimiento = "No presenta ninguna afección";
-        }  
-    }
+            $padecimiento =" padeciste infección baja (cistitis)"; 
+        }
+    }else{
+        $padecimiento = "No presenta ninguna afección";
+    }  
 
-    var_dump($padecimiento);
+    //inserta en base de datos
+
     $insertaCuestionario=$con->oEjecutar("INSERT INTO cuestionario(id_usuario,infec_orina,infec_uri_cistitis,ardor_orinar_disuria,aumento_orina_polaquiuria,sencion_novaciar_vejiga,sencion_urge_orin,sencion_dolor_pelvico,sangra_orin,levantar_orin,flujo_vaginal,color_flujo_vaginal,olor_flujo_vaginal,dolor_espalda,ulti_semanas_dolor_espalda,sensacion_fiebre,padecimiento)
     VALUES('{$idusuario}','{$infec_orin}','{$infec_vias_orin}','{$ardor_orin}','{$aumento_orin}',
            '{$sencion_novaciar_vejiga}','{$sencion_urge_orin}','{$sencion_dolor_pelvico}','{$sangra_orin}',
            '{$levantar_orin}','{$flujo_vaginal}','{$color_flujo_vaginal}','{$olor_flujo_vaginal}',
            '{$dolor_espalda}','{$ulti_semanas_dolor_espalda}','{$sensacion_fiebre}','{$padecimiento}'  )");
-    var_dump($insertaCuestionario);
    
     if ($insertaCuestionario === TRUE) {
         $hora = trim(intval(date("H")),0);
-        var_dump(intval($hora));
+    /*var_dump(intval($hora));*/
         $hora2 = 2;
         $hora3 = 9;
         $saludo;
         if($hora < $hora2){
-            $saludo = "Buenos días";
+            $saludo = "Buenos dias el paciente";
         }elseif($hora > $hora3){
-            $saludo = "Buenas noches";
+            $saludo = "Buenas noches el paciente";
         }
         else{
-            $saludo = "Buenas tardes";
+            $saludo = "Buenas tardes el paciente";
         }
 
         //Envio del correo
-        $from = "usuario@dominio.com";
-        $to = "juanf.romerog@gmail.com";
-        $subject = "Resultados del proceso indagatorio";
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-        $message = '
-        <html>
-            <head>
-                <title>Proceso indagatorio</title>
-            </head>
-            <style>
-            .container-image{
-                display: block;
-                margin: 0 auto;
-                max-width: 100%;
-                width: 80%;
-            }
-            </style>
-            <body>
-                <img class="/container-image"/ src="/images/Nemaico.png"/ alt="/Ejemplo"/>
-                <h2>Proceso indagatorio NEMA app</h2>
-                <p>'.$saludo.' '.$nombreUsuario.' tienes '.$padecimiento.' </p>
-            </body>
-        </html>';
-        mail($to, $subject, $message, $headers); //Función de envio de correo
-    
         
-        //header('Location: index.php');
-        echo "<br />" . "<h1>" . "Gracias por registrarse!" . "</h1>";
-        echo "<h3>" . "Bienvenido: " .$_SESSION['username']. "</h3>" . "\n\n";
-        echo "<h3>" . "Iniciar Sesion: " . "<a href='login.html'>Login</a>" . "</h3>"; 
-    }else{
-        //echo "Error al crear el usuario." . $query . "<br>" . $conexion->error; 
-    }
+        //quien envia
+        $sender = 'info@nemaapp.com';
+        $senderName = 'NEMA APP';
 
+        //quien recibe
+        $recipient = 'info@nemaapp.com';
+        /*$recipient = $resultEmail;*/
+
+        //SMTP VARIABLES
+        $usernameSmtp = 'AKIASDHT7UNJ7V4YK2PR';
+        $passwordSmtp = 'BMUGLw3GC02i6EHXQIMEYr/Nd9PjqYe7QO5b8bXcTWrX';
+        $host = 'email-smtp.us-east-1.amazonaws.com';
+        $port = 587;
+
+        //CONTENIDO DE CORREO
+        $subject =  'Resultados del proceso indagatorio de: '.$nombreUsuario ;
+        $bodyText =  'prueba';
+        $bodyHTML =  '<h2>Proceso indagatorio NEMA app</h2>
+        <p>'.$saludo.'&nbsp; '.$nombreUsuario.' presenta &nbsp; '.$padecimiento.' </p>';
+
+        $mail = new PHPMailer(true);
+
+        try {
+            //SMTP settings.
+            $mail->isSMTP();
+            $mail->setFrom($sender, $senderName);
+            $mail->Username   = $usernameSmtp;
+            $mail->Password   = $passwordSmtp;
+            $mail->Host       = $host;
+            $mail->Port       = $port;
+            $mail->SMTPAuth   = true;
+            $mail->SMTPSecure = 'tls';
+        
+            // QUIEN RECIBE
+            $mail->addAddress($recipient);
+        
+            // CONTENIDO DE MAIL
+            $mail->isHTML(true);
+            $mail->Subject    = $subject;
+            $mail->Body       =  $bodyHTML;
+            $mail->AltBody    = $bodyText;
+
+
+            if($mail->Send()){
+               /* echo "Email sent!" , PHP_EOL;*/
+                ?> <script>
+                alert("Su proceso indagarotio fue enviado a su medico correspondiente.");
+                location.replace("index.php");
+                </script> <?php
+            }else{
+            
+        } 
+         }catch (phpmailerException $e) {
+             echo "An error occurred. {$e->errorMessage()}", PHP_EOL; 
+         } catch (Exception $e) {
+             echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; 
+        }
+    }
 }
    ?>
