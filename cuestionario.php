@@ -178,6 +178,7 @@ if($now > $_SESSION['expire']) {
 				</div>
 				<div class="clear"></div>
 				<input type="submit" value="Submit">
+				<input type="submit" value="Submit">
 			</form>
 		</div>
    </div>
@@ -253,6 +254,9 @@ if($now > $_SESSION['expire']) {
 							});
 
 				  </script>
+
+
+
 			<!-- //Calendar -->
 
 </body>
